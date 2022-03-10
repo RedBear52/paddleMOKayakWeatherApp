@@ -62,7 +62,7 @@ body {
 }
 
 .mars-current-weather {
-    background: rgba(0,0,0,.5);
+    background: rgba(0,0,0,.7);
     padding: 2em;
     margin: 4em 0 0 4em;
     max-width: 1000px;
@@ -126,6 +126,8 @@ body {
 
 .info {
     grid-column: 1 / 3;
+    letter-spacing: .75px;
+    font-weight: lighter;
 }
 
 .unit {
@@ -262,5 +264,5 @@ body {
 
 .previous-day__more-info:hover {
     background: rgb(156, 21, 44);
-    color:pink;
+    color:rgb(255, 254, 254);
 }

@@ -13,6 +13,27 @@ function getWeather() {
     fetch(API_URL)
     .then(res => res.json())
     .then(data => {
-        console.log(data)
+        const {
+            ...weatherData
+        } = data
+        const temp = Object.entries(weatherData).map(([weather, data]) => {
+            return {
+                currentWeatherConditions: weatherData.properties.periods[0].shortForecast,
+                timeWindow: weatherData.properties.periods[0].name,
+                tempNum: weatherData.properties.periods[0].temperature,
+                tempstring: `${weatherData.properties.periods[0].temperature}°${weatherData.properties.periods[4].temperatureUnit}`,
+                windDirection: weatherData.properties.periods[0].windDirection,
+                windSpeed: weatherData.properties.periods[0].windSpeed,
+                detailedForecast: weatherData.properties.periods[0].detailedForecast,
+            }
+        })
+        console.log(weatherData.properties.periods)
+        console.log(weatherData.properties.periods[4].name)
+        console.log(`${weatherData.properties.periods[4].temperature}°${weatherData.properties.periods[4].temperatureUnit}`) 
+        console.log(weatherData.properties.periods[4].icon)
+        console.log(weatherData.properties.periods[4].windDirection)
+        console.log(weatherData.properties.periods[4].windSpeed)
+        console.log(weatherData.properties.periods[4].detailedForecast)
+        console.log(temp)
     })
 }
