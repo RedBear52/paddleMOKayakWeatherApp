@@ -109,7 +109,7 @@ body {
 }
 
 .wind__arrow {
-    --direction: 192deg;
+    --direction: 180deg;
     --size: 1rem;
     height: calc(var(--size) * 3);
     width: var(--size);
@@ -185,11 +185,82 @@ body {
 
 
 .previous-weather {
-    padding: 2em;
     color: rgb(10, 71, 73);
-    background: rgba(4,4,4,.6);
-    margin: 4em 0 0 4em;
-    max-width: 800px;
-    height: 10vh;
-    font-stretch: semi-condensed;
+    background: white;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    transform: translateY(60%);
+    transition: transform 350ms ease;
+    padding: 3em;
+}
+
+.show-previous-weather-label {
+    border: 0;
+    position: absolute;
+    background: white;
+    padding: .075em;
+    padding-top: .35em;;
+    width: 10rem;
+    text-align: center;
+    font-size: 1.75rem;
+    line-height: 1;
+    transform: translate(-50%, calc(-90% - 3rem));
+    left: 50%;
+    clip-path: polygon(50% 0, 0 100%, 100% 100%);
+    cursor: pointer;
+    color: lightgray;
+    font-family: inherit;
+}
+
+.show-previous-weather-label:hover, .show-previous-weather-label:focus {
+    color:  #D06D6D;
+}
+
+/* .show-previous-weather-label.show-weather span {
+    display: block;
+    transform: rotate(180deg);
+} */
+
+.previous-weather.show-weather span {
+    display: block;
+    transform: rotate(180deg);
+    transition: transform 300ms ease;
+}
+
+.previous-weather.show-weather {
+    transform: translateY(15%);
+    bottom: 0;
+    transition: transform 300ms ease;
+    opacity: 1;
+}
+
+.previous-days {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 7em;
+    text-align: center;
+}
+
+.previous-day > * {
+    margin: 0;
+}
+
+.previous-day.previous-day__date {
+    font-size: .9rem;
+}
+
+.previous-day__more-info {
+    border: 0;
+    border-radius: 100vmax;
+    color: #ff8f8f;
+    background-color:  rgb(15, 94, 97);
+    text-transform: uppercase;
+    padding: .3em 1em;
+    margin-top: 1em;
+}
+
+.previous-day__more-info:hover {
+    background: rgb(156, 21, 44);
+    color:pink;
 }
