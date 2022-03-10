@@ -16,15 +16,15 @@ function getWeather() {
         const {
             ...weatherData
         } = data
-        const temp = Object.entries(weatherData).map(([weather, data]) => {
+        const temp = Object.entries(weatherData.properties.periods).map(([weather, data]) => {
             return {
-                currentWeatherConditions: weatherData.properties.periods[0].shortForecast,
-                timeWindow: weatherData.properties.periods[0].name,
-                tempNum: weatherData.properties.periods[0].temperature,
-                tempstring: `${weatherData.properties.periods[0].temperature}°${weatherData.properties.periods[4].temperatureUnit}`,
-                windDirection: weatherData.properties.periods[0].windDirection,
-                windSpeed: weatherData.properties.periods[0].windSpeed,
-                detailedForecast: weatherData.properties.periods[0].detailedForecast,
+                currentCond: data.shortForecast,
+                timeWindow: data.name,
+                tempNum: data.temperature,
+                tempstring: `${data.temperature}°${data.temperatureUnit}`,
+                windDir: data.windDirection,
+                windSpd: data.windSpeed,
+                forecastSum: data.detailedForecast,
             }
         })
         console.log(weatherData.properties.periods)
