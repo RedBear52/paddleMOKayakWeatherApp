@@ -3,6 +3,7 @@ const API_URL = `https://api.weather.gov/gridpoints/LSX/81,26/forecast`
 
 const previousWeatherToggle = document.querySelector('.show-previous-weather-label')
 const previousWeather = document.querySelector('.previous-weather')
+
 const currentTimeEle = document.querySelector('[data-current-time]')
 const currentDateEle = document.querySelector('[data-current-date]')
 const currentTempHighEle = document.querySelector('[data-current-temp-high]')
@@ -14,16 +15,19 @@ previousWeatherToggle.addEventListener('click', () => {
     previousWeather.classList.toggle('show-weather')
 })
 
+const upcomingDaysTemplate = document.querySelector('[data-upcoming-days-template]')
+const upcomingDaysContainer = document.querySelector('[ata-upcoming-days]')
+
 let featuredWeatherIndex
 
 getWeather().then().then(weather => {
     featuredWeatherIndex = weather[0]
-    console.log(weather)
     displayFeaturedWeather(weather)
+    displayUpcomingDays(weather)
 })
 
 function displayFeaturedWeather(weather) {
-    const featuredWeather = featuredWeatherIndex
+    const featuredWeather = weather[featuredWeatherIndex]
     currentTimeEle.innerText = weather.timeWindow
     currentDateEle.innerText = weather.date
     currentTempHighEle.innerText = weather.tempString
@@ -31,6 +35,30 @@ function displayFeaturedWeather(weather) {
     windSpeedEle.innerText = weather.windSpd
     windDirectionTextEle.innerText = weather.windDir
 } 
+
+function displayUpcomingDays(weather) {
+    upcomingDaysContainer.innerHTML = ''
+    weather.forEach((weatherData, index) => {
+        const dayContainer = upcomingDaysTemplate.content.cloneNode(true)
+        dayContainer.querySelector('[data-time]').innerText = weatherData.timeWindow
+        dayContainer.querySelector('[data-date]').innerText = displayDate(weatherData.timeWindow)
+        dayContainer.querySelector('[data-temp]').innerText = weatherData.tempString
+        dayContainer.querySelector('[data-wind-speed]').innerText = weatherData.windSpd
+        dayContainer.querySelector('[data-more-info-button]').addEventListener('click', () => {
+            // ?? what 's the fix ?? cant remember what I did earlier
+            featuredWeatherIndex = weather[index]
+            displayFeaturedWeather(weather)
+        })
+        dayContainer.appendChild(upcomingDaysContainer)
+    })
+}
+
+function displayDate(date) {
+    return date.toLocaleDateString(
+        undefined,
+        { day: 'numeric', month: 'long'}
+    )
+}
 
 function getWeather() {
     return fetch(API_URL)
