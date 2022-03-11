@@ -17,23 +17,40 @@
             <div class="date">
                 <h2 class="
                 section-tile
-                section-title--date">Thursday</h2>
-                <p class="date__day">March 11</p>
+                section-title--date">
+                <span data-current-time></span>
+            </h2>
+                <p class="date__day">
+                    <span data-current-date></span>
+                </p>
             </div>
 
             <div class="temp">
                 <h2 class="section-title">Temperature</h2>
-                <p class="reading">High: 35°</p>
-                <p class="reading">Low:   0°F</p>
+                <p class="reading" id="temp-read">
+                    Currently: 
+                    <span data-current-temp-high></span>
+                </p>
+                <p class="reading">
+                    <span  id="summary-read-header">
+                        Forecast Summary:  
+                    </span>
+                    <span id="summary-read" data-forecast-summary></span>
+                </p>
             </div>
 
             <div class="wind">
                 <h2 class="section-title">Wind</h2>
-                <p class="reading">15 kph</p>
+                <p class="reading">
+                    <span data-wind-speed></span>
+                </p>
                 
                 <div class="wind__direction">
-                    <p class="sr-only">45deg</p>
-                    <div class="wind__arrow"></div>
+                    <p class="sr-only">
+                        <span data-wind-direction-text></span>
+                    </p>
+                    <div class="wind__arrow">
+                    </div>
                 </div>
             </div>
 

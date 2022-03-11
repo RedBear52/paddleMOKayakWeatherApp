@@ -90,6 +90,19 @@ body {
     padding: 0 2em;
 }
 
+#temp-read {
+    padding: .125rem;
+}
+
+#summary-read {
+    font-size: smaller;
+    line-height: .5;
+}
+
+#summary-read-header {
+    color: white;
+}
+
 .wind {
     grid-column: 3 / 4;
     display: grid;
