@@ -232,14 +232,12 @@ body {
     color:  #D06D6D;
 }
 
-/* .show-previous-weather-label.show-weather span {
+.show-previous-weather-label.show-weather span {
     display: block;
-    transform: rotate(180deg);
-} */
+}
 
 .previous-weather.show-weather span {
     display: block;
-    transform: rotate(180deg);
     transition: transform 300ms ease;
 }
 

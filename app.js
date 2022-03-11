@@ -23,7 +23,7 @@ getWeather().then().then(weather => {
 })
 
 function displayFeaturedWeather(weather) {
-    const featuredWeather = featuredWeatherIndex
+    const featuredWeather = weather[featuredWeather]
     currentTimeEle.innerText = featuredWeatherIndex.timeWindow
     currentDateEle.innerText = featuredWeatherIndex.date
     currentTempHighEle.innerText = featuredWeatherIndex.tempString
