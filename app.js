@@ -23,13 +23,13 @@ getWeather().then().then(weather => {
 })
 
 function displayFeaturedWeather(weather) {
-    const featuredWeather = weather[featuredWeather]
-    currentTimeEle.innerText = featuredWeatherIndex.timeWindow
-    currentDateEle.innerText = featuredWeatherIndex.date
-    currentTempHighEle.innerText = featuredWeatherIndex.tempString
-    forecastSummaryEle.innerText = featuredWeatherIndex.forecastSum
-    windSpeedEle.innerText = featuredWeatherIndex.windSpd
-    windDirectionTextEle.innerText = featuredWeatherIndex.windDir
+    const featuredWeather = featuredWeatherIndex
+    currentTimeEle.innerText = weather.timeWindow
+    currentDateEle.innerText = weather.date
+    currentTempHighEle.innerText = weather.tempString
+    forecastSummaryEle.innerText = weather.forecastSum
+    windSpeedEle.innerText = weather.windSpd
+    windDirectionTextEle.innerText = weather.windDir
 } 
 
 function getWeather() {
