@@ -27,7 +27,7 @@ getWeather().then().then(weather => {
 })
 
 function displayFeaturedWeather(weather) {
-    const featuredWeather = weather[0]
+    const featuredWeather = featuredWeatherIndex
     currentTimeEle.innerText = featuredWeather.timeWindow
     currentDateEle.innerText = displayDate(featuredWeather.date)
     currentTempHighEle.innerText = featuredWeather.tempString
@@ -45,8 +45,8 @@ function displayUpcomingDays(weather) {
         dayContainer.querySelector('[data-temp]').innerText = weatherData.tempString
         dayContainer.querySelector('[data-wind-speed]').innerText = weatherData.windSpd
         dayContainer.querySelector('[data-more-info-button]').addEventListener('click', () => {
-            featuredWeatherIndex = weather[featuredWeatherIndex]
-            displayFeaturedWeather(weather)
+            featuredWeatherIndex = weather[index]
+            displayFeaturedWeather(featuredWeatherIndex)
         })
         upcomingDaysContainer.appendChild(dayContainer)
     })
