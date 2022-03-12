@@ -232,14 +232,12 @@ body {
     color:  #D06D6D;
 }
 
-/* .show-previous-weather-label.show-weather span {
+.show-previous-weather-label.show-weather span {
     display: block;
-    transform: rotate(180deg);
-} */
+}
 
 .previous-weather.show-weather span {
     display: block;
-    transform: rotate(180deg);
     transition: transform 300ms ease;
 }
 
@@ -253,12 +251,14 @@ body {
 .previous-days {
     display: flex;
     justify-content: space-between;
-    padding-right: 7em;
+    gap: 3em;
     text-align: center;
+    overflow: scroll;
 }
 
 .previous-day > * {
     margin: 0;
+    width: 20vw;
 }
 
 .previous-day.previous-day__date {
