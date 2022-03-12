@@ -16,7 +16,7 @@ previousWeatherToggle.addEventListener('click', () => {
 })
 
 const upcomingDaysTemplate = document.querySelector('[data-upcoming-days-template]')
-const upcomingDaysContainer = document.querySelector('[ata-upcoming-days]')
+const upcomingDaysContainer = document.querySelector('[data-upcoming-days]')
 
 let featuredWeatherIndex
 
@@ -27,13 +27,13 @@ getWeather().then().then(weather => {
 })
 
 function displayFeaturedWeather(weather) {
-    const featuredWeather = weather[featuredWeatherIndex]
-    currentTimeEle.innerText = weather.timeWindow
-    currentDateEle.innerText = weather.date
-    currentTempHighEle.innerText = weather.tempString
-    forecastSummaryEle.innerText = weather.forecastSum
-    windSpeedEle.innerText = weather.windSpd
-    windDirectionTextEle.innerText = weather.windDir
+    const featuredWeather = weather[0]
+    currentTimeEle.innerText = featuredWeather.timeWindow
+    currentDateEle.innerText = displayDate(featuredWeather.date)
+    currentTempHighEle.innerText = featuredWeather.tempString
+    forecastSummaryEle.innerText = featuredWeather.forecastSum
+    windSpeedEle.innerText = featuredWeather.windSpd
+    windDirectionTextEle.innerText = featuredWeather.windDir
 } 
 
 function displayUpcomingDays(weather) {
@@ -41,7 +41,7 @@ function displayUpcomingDays(weather) {
     weather.forEach((weatherData, index) => {
         const dayContainer = upcomingDaysTemplate.content.cloneNode(true)
         dayContainer.querySelector('[data-time]').innerText = weatherData.timeWindow
-        dayContainer.querySelector('[data-date]').innerText = displayDate(weatherData.timeWindow)
+        dayContainer.querySelector('[data-date]').innerText = displayDate(weatherData.date)
         dayContainer.querySelector('[data-temp]').innerText = weatherData.tempString
         dayContainer.querySelector('[data-wind-speed]').innerText = weatherData.windSpd
         dayContainer.querySelector('[data-more-info-button]').addEventListener('click', () => {
@@ -49,7 +49,7 @@ function displayUpcomingDays(weather) {
             featuredWeatherIndex = weather[index]
             displayFeaturedWeather(weather)
         })
-        dayContainer.appendChild(upcomingDaysContainer)
+        upcomingDaysContainer.appendChild(dayContainer)
     })
 }
 
@@ -79,6 +79,6 @@ function getWeather() {
                 date: new Date(data.startTime),
             }
         })
-        console.log(temp)
+        // console.log(temp)
     })
 }
