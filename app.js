@@ -45,8 +45,7 @@ function displayUpcomingDays(weather) {
         dayContainer.querySelector('[data-temp]').innerText = weatherData.tempString
         dayContainer.querySelector('[data-wind-speed]').innerText = weatherData.windSpd
         dayContainer.querySelector('[data-more-info-button]').addEventListener('click', () => {
-            // ?? what 's the fix ?? cant remember what I did earlier
-            featuredWeatherIndex = weather[index]
+            featuredWeatherIndex = weather[featuredWeatherIndex]
             displayFeaturedWeather(weather)
         })
         upcomingDaysContainer.appendChild(dayContainer)

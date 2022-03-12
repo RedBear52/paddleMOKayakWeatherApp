@@ -251,12 +251,14 @@ body {
 .previous-days {
     display: flex;
     justify-content: space-between;
-    padding-right: 7em;
+    gap: 3em;
     text-align: center;
+    overflow: scroll;
 }
 
 .previous-day > * {
     margin: 0;
+    width: 20vw;
 }
 
 .previous-day.previous-day__date {
