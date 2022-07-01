@@ -1,4 +1,4 @@
-const api_key = 'chdQVbRHrZRfQvJNc99qPurfsudtu0WHDp4f7vzJ'
+
 const API_URL = `https://api.weather.gov/gridpoints/LSX/81,26/forecast`
 
 const previousWeatherToggle = document.querySelector('.show-previous-weather-label')
